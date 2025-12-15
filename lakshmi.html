@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simple Survey Website</title>
+</head>
+<body style="font-family: Arial; background-color: #f2f2f2; text-align: center; padding: 20px;">
+
+  <h1>📝 Simple Survey Form</h1>
+
+  <form id="surveyForm" style="background-color: white; padding: 20px; border-radius: 10px; display: inline-block; text-align: left;">
+    
+    <label>Name:</label><br>
+    <input type="text" id="name" required><br><br>
+
+    <label>Age:</label><br>
+    <input type="number" id="age" required><br><br>
+
+    <label>How was your experience?</label><br>
+    <select id="experience" required>
+      <option value="">Select</option>
+      <option>Excellent</option>
+      <option>Good</option>
+      <option>Average</option>
+      <option>Poor</option>
+    </select><br><br>
+
+    <label>Would you recommend us?</label><br>
+    <input type="radio" name="recommend" value="Yes" required> Yes
+    <input type="radio" name="recommend" value="No"> No<br><br>
+
+    <label>Comments:</label><br>
+    <textarea id="comments" rows="3" cols="30" placeholder="Your feedback..."></textarea><br><br>
+
+    <input type="button" value="Submit" onclick="submitSurvey()">
+  </form>
+
+  <h3 id="message" style="color: green; margin-top: 20px;"></h3>
+
+  <script>
+    function submitSurvey() {
+      const name = document.getElementById('name').value;
+      const age = document.getElementById('age').value;
+      const experience = document.getElementById('experience').value;
+      const recommend = document.querySelector('input[name="recommend"]:checked');
+
+      if (!name || !age || !experience || !recommend) {
+        alert("⚠️ Please fill out all required fields.");
+        return;
+      }
+
+      document.getElementById('surveyForm').style.display = 'none';
+      document.getElementById('message').innerText = "✅ Thank you for your feedback, " + name + "!";
+    }
+  </script>
+
+</body>
+</html>
